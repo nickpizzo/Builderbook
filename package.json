@@ -5,9 +5,8 @@
   "scripts": {
     "build": "next build",
     "start": "next start",
-    "dev": "next",
     "lint": "eslint components pages lib server",
-    "dev-express": "nodemon server/app.js --watch server --exec babel-node --presets=@babel/preset-env"
+    "dev": "nodemon server/app.js --watch server --exec babel-node --presets=@babel/preset-env"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.5",
@@ -26,9 +25,14 @@
     "dotenv": "^6.1.0",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "googleapis": "^35.0.0",
+    "lodash": "^4.17.11",
     "mongoose": "^5.3.12",
     "next": "^7.0.2",
     "nodemon": "^1.18.6",
+    "nprogress": "^0.2.0",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",

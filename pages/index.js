@@ -1,28 +1,38 @@
+/* eslint-disable */
+
+import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+
 import withLayout from '../lib/withLayout';
+import withAuth from '../lib/withAuth';
 
-const Index = ({ user }) => (
-  <div style={{ padding: '10px 45px' }}>
-    <Head>
-      <title>Index Page</title>
-      <meta name="description" content="This is the description of the Index page" />
-    </Head>
-    <p>Index page content</p>
-    <p>{user.email}</p>
-  </div>
-);
+class Index extends React.Component {
+  static propTypes = {
+    user: PropTypes.shape({
+      displayName: PropTypes.string,
+      email: PropTypes.string.isRequired,
+    }),
+  };
 
-Index.getInitialProps = async ({ query }) => ({ user: query.user });
+  static defaultProps = {
+    user: null,
+  };
 
-Index.propTypes = {
-  user: PropTypes.shape({
-    email: PropTypes.string.isRequired,
-  }),
-};
+  render() {
+    const { user } = this.props;
 
-Index.defaultProps = {
-  user: null,
-};
+    return (
+      <div style={{ padding: '10px 45px' }}>
+        <Head>
+          <title>Dashboard</title>
+          <meta name="description" content="This is the description of the Index page" />
+        </Head>
+        <p>Dashboard</p>
+        <p>{user.email}</p>
+      </div>
+    );
+  }
+}
 
-export default withLayout(Index);
+export default withAuth(withLayout(Index));
