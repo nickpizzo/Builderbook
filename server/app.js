@@ -56,12 +56,12 @@ app.prepare().then(() => {
   server.use(session(sess));
 
   // test route
-  server.get('/', (req, res) => {
-    User.findOne({ slug: 'team-builder-book' }).then((user) => {
-      req.user = user;
-      app.render(req, res, '/');
-    });
-  });
+  // server.get('/', (req, res) => {
+  //   User.findOne({ slug: 'team-builder-book' }).then((user) => {
+  //     req.user = user;
+  //     app.render(req, res, '/');
+  //   });
+  // });
 
   server.get('*', (req, res) => handle(req, res));
 
