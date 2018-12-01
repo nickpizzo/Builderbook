@@ -5,9 +5,9 @@ import mongoose from 'mongoose';
 import session from 'express-session';
 import mongoSessionStore from 'connect-mongo';
 
-import User from './models/User';
+import auth from './google';
 
-dotenv.config();
+require('dotenv').config();
 
 const dev = process.env.NODE_ENV !== 'production';
 const MONGO_URL = process.env.MONGO_URL_TEST;
@@ -55,13 +55,7 @@ app.prepare().then(() => {
 
   server.use(session(sess));
 
-  // test route
-  // server.get('/', (req, res) => {
-  //   User.findOne({ slug: 'team-builder-book' }).then((user) => {
-  //     req.user = user;
-  //     app.render(req, res, '/');
-  //   });
-  // });
+  auth({ server, ROOT_URL });
 
   server.get('*', (req, res) => handle(req, res));
 

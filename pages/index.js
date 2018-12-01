@@ -29,6 +29,7 @@ class Index extends React.Component {
           <meta name="description" content="This is the description of the Index page" />
         </Head>
         <p>Dashboard</p>
+        <p>Email: {user.email}</p>
         <p />
       </div>
     );
